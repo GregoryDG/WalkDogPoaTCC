@@ -34,8 +34,8 @@ function adicionaTarefa(nomeDog, porteDog, descriptDog) {
         elementoTarefa += "<td class='textoNomeDog'>"+ nomeDog +"</td>";
         elementoTarefa += "<td class='textoPorteDog'>"+ porteDog +"</td>";
         elementoTarefa += "<td class='textoDescripDog'>"+ descriptDog +"</td>";
-        elementoTarefa += "<td><button type='button' id='btnEditar' class='btn btn-default btnEditar'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></td>";
-        elementoTarefa += "<td><button type='button' id='btnExcluir' class='btn btn-default btnExcluir'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>"
+        elementoTarefa += "<td><button type='button' id='btnEditar' class='btn btn-success btnEditar'><span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></button></td>";
+        elementoTarefa += "<td><button type='button' id='btnExcluir' class='btn btn-success btnExcluir'><span class='glyphicon glyphicon-remove' aria-hidden='true'></span></button></td>"
         elementoTarefa += "</tr>";
 
     //adiciona linha na tabela
