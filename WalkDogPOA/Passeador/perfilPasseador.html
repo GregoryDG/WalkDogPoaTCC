@@ -2,121 +2,159 @@
 <html lang="en">
 
 <head>
-    <title>WalkDogPoa</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!--Lembrem de adicionarem o arquivo JS de vocês-->
-    <script src="perfilONGjs.js"></script>
-    <style type="text/css">
-	    nav a img {
-            width: 150px;
-            padding: 5px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="https://code.angularjs.org/1.2.6/angular.min.js"></script>
+  <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/angularfire/0.5.0/angularfire.min.js"></script>
+  <script src="passeadorJS.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand|Saira+Condensed|Shadows+Into+Light" rel="stylesheet">
+  <link rel="icon" href="../img/dog.png" />
+
+  <title>WalkdogPOA — Passeador</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <style>
+    body {
+      padding-top: 54px;
+    }
+
+    @media (min-width: 992px) {
+      body {
+        padding-top: 56px;
+      }
+    }
+
+    #test{
+      padding-top:60px;
+    }
+
+    h2, h4{
+      font-family: 'Saira Condensed', sans-serif;
+    }
+
+    a{
+      font-family: 'Saira Condensed', sans-serif;
+    }
+
+    b{
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    #botaoTest{
+      font-family: 'Saira Condensed', sans-serif;
+    }
+
+    #botaoBranco{
+      color: #ffffff;
+    }
+
+    #paragAviso{
+        font-family: 'Quicksand', sans-serif;
+        color: red;
+        font-weight: bold;
+		font-size: 12px;
+        padding-top:20px;
+    }
+  </style>
+
 </head>
 
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                    aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-                <!--<a class="navbar-brand" href="#">WalkDogPOA</a>-->
-                <a class="navbar-left" href="#">
-                    <img alt="Brand" src="imagens/logo.png">
-                </a>
-            </div>
+<body ng-controller="DemoCtrl" class="container" ng-app="DemoApp">
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <!--<ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>-->
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Perfil</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Configurações<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Editar dados</a></li>
-                            <li><a href="#">Adotar um cachorro</a></li>
-                            <li><a href="#">Suporte</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="../selecao.html">Sair</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <input type="hidden" value="0" id="idTarefaEditada">
-    <input type="hidden" value="0" id="ultimoId">
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
     <div class="container">
-        <!--<form class="form-horizontal">
-            <div class="form-group">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputNome" placeholder="Informe o nome do cachorro">
-                    <input type="text" class="form-control" id="inputPorte" placeholder="Informe o porte do cachorro">
-                    <input type="text" class="form-control" id="inputDescript" placeholder="Informe uma descrição do cachorro">
-                </div>
-                <div class="col-sm-2">
-                    <button type="button" id="btnAdicionar" class="btn btn-success"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></button>
-                </div>
-            </div>
-        </form>-->
+      <a class="navbar-brand" href="#">WALKDOGPOA Passeador</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+        aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Principal
+                <span class="sr-only">(current)</span>
+              </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Configurações</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../PaginaInicial/selecao.html">Sair</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-        <div class="panel panel-success">
-            <div class="panel-heading" align="center">Cachorros disponiveis</div>
-            <div class="panel-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Porte</th>
-                            <th>Descrição</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+  <!-- Page Content -->
+  <div class="container" id="test">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 align="center">Lista de cachorros disponíveis</h2>
 
-                    </tbody>
-                </table>
-            </div>
+        <!--<h4 align="center">Adicionar cachorro</h4>
+        ADD ITEM FORM
+        <form name="myForm">
+
+          <div>
+            <input type="text" name="todoNameField" ng-model="todoName" placeholder="Adicione um nome" required ng-minlength="3" class="form-control"
+              ng-keyup="($event.keyCode == 13 && todoName.length > 2) ? addItem() : return" style="margin-bottom: 10px" />
+            <input type="text" name="todoPorteField" ng-model="todoPorte" placeholder="Adicione o porte" required ng-minlength="3" class="form-control"
+              ng-keyup="($event.keyCode == 13 && todoPorte.length > 2) ? addItem() : return" style="margin-bottom: 10px" />
+            <input type="text" name="todoDescriField" ng-model="todoDescri" placeholder="Adicione uma descrição" required ng-minlength="3"
+              class="form-control" ng-keyup="($event.keyCode == 13 && todoPorte.length > 2) ? addItem() : return" style="margin-bottom: 10px"
+            />
+
+            <button ng-click="addItem()" ng-hide="myForm.todoNameField.$invalid" class="btn btn-success" type="button" id="botaoTest">Adicionar cachorro</button>
+          </div>
+
+        </form>
+
+        <hr>
+
+
+        TODO LIST-->
+        <div ng-repeat="item in todos" class=" list-group-item row" align="center">
+
+          <div class="col-md-12">
+            <!--COMPLETED ICON-->
+            <span class="glyphicon glyphicon-thumbs-up" ng-show="item.completed"> </span>
+
+
+            <!--todo label-->
+            <span><b>Nome: {{item.name}}</b> </span>
+
+            <small class="text-success"> <b id="numeracao">(Numeração do cachorro: {{item.id}})</b></small>
+
+            <span><b>Porte: {{item.porte}} </b></span>
+
+            <span><b>Descrição: {{item.descricao}} </b></span>
+
+
+            <!--Delete Todo button-->
+            <a class="btn btn-success" ng-click="removeItem($index, item, $event)" id="botaoBranco">
+            <i class="icon-remove-sign"></i>Escolher cachorro
+        </a>
         </div>
 
+        </div>
+        <p id="paragAviso">*Sempre tenha em mãos a numeração do cachorro para um melhor atendimento*</p>
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

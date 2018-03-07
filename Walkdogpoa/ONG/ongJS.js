@@ -53,12 +53,18 @@ function DemoCtrl($scope, $firebase, FIREBASE_URL) {
             id: timestamp,
             name : $scope.todoName,
             porte : $scope.todoPorte,
+            descricao : $scope.todoDescri,
             completed: false
         });
 
         $scope.todoName = "";
+        $scope.todoPorte = "";
+        $scope.todoDescri = "";
 
     }
 
+/*<!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*/
 
 }
