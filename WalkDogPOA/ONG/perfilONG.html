@@ -122,18 +122,18 @@
 
 
             <!--todo label-->
-            <span><b>Nome: {{item.name}}</b> </span>
+            <span><b>Nome: {{item.name}}</b> <br></span>
 
-            <small class="text-success"> <b id="numeracao">(ID do cachorro: {{item.id}})</b></small>
+            <small class="text-success"> <b id="numeracao">(ID do cachorro: {{item.id}})</b> <br></small>
 
-            <span><b>Porte: {{item.porte}} </b></span>
+            <span><b>Porte: {{item.porte}} </b> <br></span>
 
-            <span><b>Descrição: {{item.descricao}} </b></span>
+            <span><b>Descrição: {{item.descricao}} </b> <br></span>
 
 
             <!--Delete Todo button-->
             <a class="btn btn-success" ng-click="removeItem($index, item, $event)" id="botaoBranco">
-            <i class="icon-remove-sign"></i>Delete
+            <i class="icon-remove-sign"></i>Excluir
         </a>
           </div>
 

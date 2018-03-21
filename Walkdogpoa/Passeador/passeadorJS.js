@@ -1,5 +1,6 @@
 var myApp = angular.module('DemoApp', ['firebase']);
 
+
 myApp.constant("FIREBASE_URL", "https://dogwalkerpoa-tcc.firebaseio.com/" )
 
 
@@ -25,6 +26,7 @@ function DemoCtrl($scope, $firebase, FIREBASE_URL) {
 
     }
 
+   
 
 
     // Remove a Todo
@@ -35,7 +37,6 @@ function DemoCtrl($scope, $firebase, FIREBASE_URL) {
 
        // Firebase: Remove item from the list
        $scope.todos.$remove(item.id);
-
     }
 
 
