@@ -11,6 +11,16 @@ function DemoCtrl($scope, $firebase, FIREBASE_URL) {
     $scope.todos = $firebase(todosRef);
 
 
+
+    $scope.continuar = true;
+    $scope.pagIni = false;
+
+
+    $scope.adotar = function(){
+        $scope.continuar = false;
+        $scope.pagIni = true;
+    }
+
     // Update the "completed" status
     $scope.changeStatus   = function (item) {
 
@@ -25,8 +35,6 @@ function DemoCtrl($scope, $firebase, FIREBASE_URL) {
         });
 
     }
-
-   
 
 
     // Remove a Todo
